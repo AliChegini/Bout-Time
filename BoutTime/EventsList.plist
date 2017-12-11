@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>New item - 1</key>
+	<dict>
+		<key>year</key>
+		<integer>1996</integer>
+		<key>event</key>
+		<string>Year that Tupac Shakur died</string>
+	</dict>
+	<key>New item - 2</key>
+	<dict>
+		<key>year</key>
+		<integer>2014</integer>
+		<key>event</key>
+		<string>Last time Germany won the World Cup</string>
+	</dict>
+	<key>New item - 3</key>
+	<dict>
+		<key>year</key>
+		<integer>1879</integer>
+		<key>event</key>
+		<string>Year that Albert Einstein was born</string>
+	</dict>
+	<key>New item - 4</key>
+	<dict>
+		<key>year</key>
+		<integer>1955</integer>
+		<key>event</key>
+		<string>Year that Albert Einstein died</string>
+	</dict>
+	<key>New item - 5</key>
+	<dict>
+		<key>year</key>
+		<integer>1931</integer>
+		<key>event</key>
+		<string>Year that Canada declared independency</string>
+	</dict>
+	<key>New item - 6</key>
+	<dict>
+		<key>year</key>
+		<integer>1971</integer>
+		<key>event</key>
+		<string>Year that Justin Trudeau was born</string>
+	</dict>
+	<key>New item - 7</key>
+	<dict>
+		<key>year</key>
+		<integer>2015</integer>
+		<key>event</key>
+		<string>Year that Justin Trudeau was elected as the Canada&apos;s prime minister</string>
+	</dict>
+	<key>New item - 8</key>
+	<dict>
+		<key>year</key>
+		<integer>1945</integer>
+		<key>event</key>
+		<string>Year that World War 2 did end</string>
+	</dict>
+	<key>New item - 9</key>
+	<dict>
+		<key>year</key>
+		<integer>1969</integer>
+		<key>event</key>
+		<string>Year that US faked the moon landing</string>
+	</dict>
+	<key>New item - 10</key>
+	<dict>
+		<key>year</key>
+		<integer>1971</integer>
+		<key>event</key>
+		<string>Year that Elon Musk was born</string>
+	</dict>
+	<key>New item - 11</key>
+	<dict>
+		<key>year</key>
+		<integer>2018</integer>
+		<key>event</key>
+		<string>Year that Canada legalizes weed</string>
+	</dict>
+	<key>New item - 12</key>
+	<dict>
+		<key>year</key>
+		<integer>2002</integer>
+		<key>event</key>
+		<string>Last time Brazil won the world cup</string>
+	</dict>
+	<key>New item - 13</key>
+	<dict>
+		<key>year</key>
+		<integer>1989</integer>
+		<key>event</key>
+		<string>Tearing Down of Berlin Wall</string>
+	</dict>
+	<key>New item - 14</key>
+	<dict>
+		<key>year</key>
+		<integer>1991</integer>
+		<key>event</key>
+		<string>Year that Soviet Union collapsed</string>
+	</dict>
+	<key>New item - 15</key>
+	<dict>
+		<key>year</key>
+		<integer>1990</integer>
+		<key>event</key>
+		<string>World Wide Web invented, Reunification of Germany</string>
+	</dict>
+	<key>New item - 16</key>
+	<dict>
+		<key>year</key>
+		<integer>1945</integer>
+		<key>event</key>
+		<string>Dropping of Atom Bombs on Hiroshima and Nagasaki	</string>
+	</dict>
+	<key>New item - 17</key>
+	<dict>
+		<key>year</key>
+		<integer>1929</integer>
+		<key>event</key>
+		<string>Beginning of the Great Depression</string>
+	</dict>
+	<key>New item - 18</key>
+	<dict>
+		<key>year</key>
+		<integer>1896</integer>
+		<key>event</key>
+		<string>First modern Olympic Games held at Athens</string>
+	</dict>
+	<key>New item - 19</key>
+	<dict>
+		<key>year</key>
+		<integer>1865</integer>
+		<key>event</key>
+		<string>Slavery is abolished by the 13th Amendment in the United States of America	</string>
+	</dict>
+	<key>New item - 20</key>
+	<dict>
+		<key>year</key>
+		<integer>2011</integer>
+		<key>event</key>
+		<string>Fukushima Daiichi Nuclear Disaster</string>
+	</dict>
+	<key>New item - 21</key>
+	<dict>
+		<key>year</key>
+		<integer>1994</integer>
+		<key>event</key>
+		<string>End of apartheid in South Africa	</string>
+	</dict>
+	<key>New item - 22</key>
+	<dict>
+		<key>year</key>
+		<integer>1986</integer>
+		<key>event</key>
+		<string>Chernobyl disaster</string>
+	</dict>
+	<key>New item - 23</key>
+	<dict>
+		<key>year</key>
+		<integer>2010</integer>
+		<key>event</key>
+		<string>Year that Stuxnet was first uncovered</string>
+	</dict>
+	<key>New item - 24</key>
+	<dict>
+		<key>year</key>
+		<integer>2014</integer>
+		<key>event</key>
+		<string>Year that swift was released for first time</string>
+	</dict>
+	<key>New item - 25</key>
+	<dict>
+		<key>year</key>
+		<integer>1980</integer>
+		<key>event</key>
+		<string>Year that MS DOS was shipepd</string>
+	</dict>
+</dict>
+</plist>

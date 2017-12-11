@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C92D8EE1FDEF9F30073C7FF /* EventsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */; };
+		7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C92D8EF1FDF24970073C7FF /* BoutTime.swift */; };
 		7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */; };
 		7CFBADCB1FDE9E67000993D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBADCA1FDE9E67000993D0 /* ViewController.swift */; };
 		7CFBADCE1FDE9E67000993D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFBADCC1FDE9E67000993D0 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EventsList.plist; sourceTree = "<group>"; };
+		7C92D8EF1FDF24970073C7FF /* BoutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutTime.swift; sourceTree = "<group>"; };
 		7CFBADC51FDE9E67000993D0 /* BoutTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoutTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CFBADCA1FDE9E67000993D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +60,12 @@
 			children = (
 				7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */,
 				7CFBADCA1FDE9E67000993D0 /* ViewController.swift */,
+				7C92D8EF1FDF24970073C7FF /* BoutTime.swift */,
 				7CFBADCC1FDE9E67000993D0 /* Main.storyboard */,
 				7CFBADCF1FDE9E67000993D0 /* Assets.xcassets */,
 				7CFBADD11FDE9E67000993D0 /* LaunchScreen.storyboard */,
 				7CFBADD41FDE9E67000993D0 /* Info.plist */,
+				7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */,
 			);
 			path = BoutTime;
 			sourceTree = "<group>";
@@ -126,6 +132,7 @@
 				7CFBADD31FDE9E67000993D0 /* LaunchScreen.storyboard in Resources */,
 				7CFBADD01FDE9E67000993D0 /* Assets.xcassets in Resources */,
 				7CFBADCE1FDE9E67000993D0 /* Main.storyboard in Resources */,
+				7C92D8EE1FDEF9F30073C7FF /* EventsList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +145,7 @@
 			files = (
 				7CFBADCB1FDE9E67000993D0 /* ViewController.swift in Sources */,
 				7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */,
+				7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

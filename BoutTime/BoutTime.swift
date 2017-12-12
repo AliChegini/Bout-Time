@@ -13,14 +13,14 @@ enum PlistError: Error {
     case conversionFailure
 }
 
-// Class with a type method to convert plist to dictionary of [String: Int]
+// Class with a type method to convert plist to dictionary of [String: Any]
 class PlistConvertor {
-    static func dictionary(fromFile name: String, ofType type: String) throws -> [String: Int] {
+    static func dictionary(fromFile name: String, ofType type: String) throws -> [String: Any] {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else {
             throw PlistError.invalidResource
         }
         
-        guard let dictionary = NSDictionary(contentsOfFile: path) as? [String: Int] else {
+        guard let dictionary = NSDictionary(contentsOfFile: path) as? [String: Any] else {
             throw PlistError.conversionFailure
         }
         

@@ -148,6 +148,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="event1" destination="1hO-HX-qRv" id="hST-Mf-uJb"/>
+                        <outlet property="event2" destination="Qq3-Ny-jEE" id="guF-MT-P0S"/>
+                        <outlet property="event3" destination="F2g-P1-IQT" id="hzn-tK-ptK"/>
+                        <outlet property="event4" destination="y0b-Tg-cTy" id="nMN-y6-xiY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

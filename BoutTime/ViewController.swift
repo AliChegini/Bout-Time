@@ -10,10 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBOutlet weak var event1: UILabel!
+    @IBOutlet weak var event2: UILabel!
+    @IBOutlet weak var event3: UILabel!
+    @IBOutlet weak var event4: UILabel!
+    
+    
+    var dictionary: [String: Any] = [:]
+    var events: [String: Any] = [:]
+    
+    
+    // Loading the data from a plist file
     required init?(coder aDecoder: NSCoder) {
         do {
-            let dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
-            print(dictionary.values)
+            dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
+            events = EventManager.randomEventGenerator(dictionary: dictionary)
         } catch let error {
             fatalError("\(error)")
         }
@@ -29,6 +41,25 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // Start a new game
+    
+    // Start a new round
+    
+    // Populate the events
+    
+    // validate the answer
+    
+    // show score
+    
+
+    func displayEvents() {
+        for (key, value) in events {
+            
+        }
+    }
+    
 
 }
 

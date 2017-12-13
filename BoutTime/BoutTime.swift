@@ -8,6 +8,8 @@
 
 import Foundation
 
+let eventsPerRound: Int = 4
+
 enum PlistError: Error {
     case invalidResource
     case conversionFailure
@@ -28,4 +30,22 @@ class PlistConvertor {
     }
 }
 
+
+// Class to organize events in group of 4
+class EventManager {
+    
+    static func randomEventGenerator(dictionary: [String: Any]) -> [String: Any]{
+        var copyOfDictionary = dictionary
+        var organizedEvents: [String: Any] = [:]
+        
+        for (key, _) in copyOfDictionary {
+            if organizedEvents.count < eventsPerRound {
+                organizedEvents[key] = copyOfDictionary[key]
+                copyOfDictionary.removeValue(forKey: key)
+            }
+        }
+        
+        return organizedEvents
+    }
+}
 

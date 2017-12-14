@@ -18,14 +18,15 @@ class ViewController: UIViewController {
     
     
     var dictionary: [String: Any] = [:]
-    var events: [String: Any] = [:]
+    var events: [HistoricalEvent]
     
     
     // Loading the data from a plist file
     required init?(coder aDecoder: NSCoder) {
         do {
             dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
-            events = EventManager.randomEventGenerator(dictionary: dictionary)
+            events = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
+            //print(events[0].event)
         } catch let error {
             fatalError("\(error)")
         }
@@ -43,8 +44,6 @@ class ViewController: UIViewController {
     }
     
     
-    // Start a new game
-    
     // Start a new round
     
     // Populate the events
@@ -52,13 +51,6 @@ class ViewController: UIViewController {
     // validate the answer
     
     // show score
-    
-
-    func displayEvents() {
-        for (key, value) in events {
-            
-        }
-    }
     
 
 }

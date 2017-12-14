@@ -8,8 +8,6 @@
 
 import Foundation
 
-let eventsPerRound: Int = 4
-
 enum PlistError: Error {
     case invalidResource
     case conversionFailure
@@ -31,17 +29,30 @@ class PlistConvertor {
 }
 
 
-// Class to organize events in group of 4
-class EventManager {
+protocol HistoricalEvent {
+    var event: String { get }
+    var year: Int { get }
+}
+
+
+class EventManager: HistoricalEvent {
     
-    static func randomEventGenerator(dictionary: [String: Any]) -> [String: Any]{
-        var copyOfDictionary = dictionary
-        var organizedEvents: [String: Any] = [:]
+    var event: String
+    var year: Int
+    
+    init(event: String, year: Int) {
+        self.event = event
+        self.year = year
+    }
+    
+    // Covert dictionary of [String: Any] to array of [HistoricalEvent]
+    static func dictionaryUnarchiver(fromDictionary dictionary: [String: Any]) -> [HistoricalEvent]{
+        var organizedEvents: [HistoricalEvent] = []
         
-        for (key, _) in copyOfDictionary {
-            if organizedEvents.count < eventsPerRound {
-                organizedEvents[key] = copyOfDictionary[key]
-                copyOfDictionary.removeValue(forKey: key)
+        for (key, value) in dictionary {
+            if let itemDictionary = value as? [String: Any], let year = itemDictionary["year"] as? Int {
+                let historicalEvent = EventManager(event: key, year: year)
+                organizedEvents.append(historicalEvent)
             }
         }
         

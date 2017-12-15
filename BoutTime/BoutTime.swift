@@ -48,7 +48,7 @@ class EventManager: HistoricalEvent {
         self.year = year
     }
     
-    // Covert dictionary of [String: Any] to array of [HistoricalEvent]
+    // Convert dictionary of [String: Any] to array of [HistoricalEvent]
     static func dictionaryUnarchiver(fromDictionary dictionary: [String: Any]) -> [HistoricalEvent]{
         var events: [HistoricalEvent] = []
         for (key, value) in dictionary {
@@ -83,4 +83,25 @@ func provideEvents(_ events: [HistoricalEvent]) -> [HistoricalEvent] {
     
     return organizedEvents
 }
+
+
+struct EventPack {
+    
+    let event1: HistoricalEvent
+    let event2: HistoricalEvent
+    let event3: HistoricalEvent
+    let event4: HistoricalEvent
+    
+    // Helper function to populate the struct
+    static func provideEventPack(_ organizedEvents: [HistoricalEvent]) -> EventPack {
+        let eventPack = EventPack(event1: organizedEvents[0], event2: organizedEvents[1], event3: organizedEvents[2], event4: organizedEvents[3])
+        
+        return eventPack
+    }
+
+}
+
+
+
+
 

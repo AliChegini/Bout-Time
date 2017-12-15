@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         do {
             dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
             organizedEvents = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
-            print(organizedEvents)
         } catch let error {
             fatalError("\(error)")
         }
@@ -36,7 +35,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        displayEvents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +47,11 @@ class ViewController: UIViewController {
     // Display events
     func displayEvents() {
         
+        let eventPack = EventPack.provideEventPack(organizedEvents)
+        event1.text = eventPack.event1.event
+        event2.text = eventPack.event2.event
+        event3.text = eventPack.event3.event
+        event4.text = eventPack.event4.event
     }
 
 }

@@ -18,15 +18,15 @@ class ViewController: UIViewController {
     
     
     var dictionary: [String: Any] = [:]
-    var events: [HistoricalEvent]
+    var organizedEvents: [HistoricalEvent]
     
     
     // Loading the data from a plist file
     required init?(coder aDecoder: NSCoder) {
         do {
             dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
-            events = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
-            //print(events[0].event)
+            organizedEvents = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
+            print(organizedEvents)
         } catch let error {
             fatalError("\(error)")
         }
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,14 +45,10 @@ class ViewController: UIViewController {
     }
     
     
-    // Start a new round
-    
-    // Populate the events
-    
-    // validate the answer
-    
-    // show score
-    
+    // Display events
+    func displayEvents() {
+        
+    }
 
 }
 

@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import GameKit
+
+let eventsPerRound = 4
 
 enum PlistError: Error {
     case invalidResource
@@ -47,16 +50,37 @@ class EventManager: HistoricalEvent {
     
     // Covert dictionary of [String: Any] to array of [HistoricalEvent]
     static func dictionaryUnarchiver(fromDictionary dictionary: [String: Any]) -> [HistoricalEvent]{
-        var organizedEvents: [HistoricalEvent] = []
-        
+        var events: [HistoricalEvent] = []
         for (key, value) in dictionary {
             if let itemDictionary = value as? [String: Any], let year = itemDictionary["year"] as? Int {
                 let historicalEvent = EventManager(event: key, year: year)
-                organizedEvents.append(historicalEvent)
+                events.append(historicalEvent)
             }
         }
         
+        let organizedEvents = provideEvents(events)
+        
         return organizedEvents
     }
+    
+}
+
+
+// Helper function to divide the events in group of 4
+func provideEvents(_ events: [HistoricalEvent]) -> [HistoricalEvent] {
+    var organizedEvents: [HistoricalEvent] = []
+    var copyOfEvents = events
+    
+    for _ in events {
+        let randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: copyOfEvents.count - 1)
+        if organizedEvents.count < eventsPerRound {
+            organizedEvents.append(copyOfEvents[randomNumber])
+            copyOfEvents.remove(at: randomNumber)
+        } else {
+            return organizedEvents
+        }
+    }
+    
+    return organizedEvents
 }
 

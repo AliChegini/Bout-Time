@@ -92,7 +92,7 @@ struct EventPack {
     let event3: HistoricalEvent
     let event4: HistoricalEvent
     
-    // Helper function to populate the struct
+    // Helper function to populate the struct for easy use in controller
     static func provideEventPack(_ organizedEvents: [HistoricalEvent]) -> EventPack {
         let eventPack = EventPack(event1: organizedEvents[0], event2: organizedEvents[1], event3: organizedEvents[2], event4: organizedEvents[3])
         

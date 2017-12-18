@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label3: UILabel!
     @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var resultButton: UIButton!
     
     
     
@@ -28,20 +29,20 @@ class ViewController: UIViewController {
     
     
     var dictionary: [String: Any] = [:]
-    var organizedEvents: [HistoricalEvent]
+    var point: Int = 0
     
     
-    // Loading the data from a plist file
+    // Converting the data from a plist file into dictionary
     required init?(coder aDecoder: NSCoder) {
         do {
             dictionary = try PlistConvertor.dictionary(fromFile: "EventsList", ofType: "plist")
-            organizedEvents = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
         } catch let error {
             fatalError("\(error)")
         }
         super.init(coder: aDecoder)
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -65,17 +66,31 @@ class ViewController: UIViewController {
     // Enable detection of shake motion
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            if (label1.tag >= label2.tag) && (label2.tag >= label3.tag) && (label3.tag >= label4.tag) {
-                timer.isHidden = true
-            } else {
-                timer.isHidden = false
-            }
-            
+            validateAnswer()
         }
     }
     
-    // In each move function labels along with tags - year - get reordered
+    // Helper method to check the ordering
+    func validateAnswer() {
+        if (label1.tag >= label2.tag) && (label2.tag >= label3.tag) && (label3.tag >= label4.tag) {
+            point += 1
+            timer.isHidden = true
+            resultButton.isHidden = false
+            resultButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
+        } else {
+            timer.isHidden = true
+            resultButton.isHidden = false
+            resultButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
+        }
+    }
     
+    @IBAction func nextRound() {
+        displayEvents()
+    }
+    
+    
+    
+    // In each move function labels along with tags - year - get reordered
     @IBAction func moveDownLabel1() {
         button1.setImage(#imageLiteral(resourceName: "down_full_selected"), for: .highlighted)
         
@@ -162,7 +177,9 @@ class ViewController: UIViewController {
    
     // Display events
     func displayEvents() {
+        let organizedEvents = EventManager.dictionaryUnarchiver(fromDictionary: dictionary)
         let eventPack = EventPack.provideEventPack(organizedEvents)
+        
         // Populating labels with text and tag
         label1.text = eventPack.event1.event
         label1.tag = eventPack.event1.year
@@ -175,6 +192,9 @@ class ViewController: UIViewController {
         
         label4.text = eventPack.event4.event
         label4.tag = eventPack.event4.year
+        
+        timer.isHidden = false
+        resultButton.isHidden = true
     }
     
     

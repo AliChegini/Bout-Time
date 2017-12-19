@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GameKit
+import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -30,6 +32,15 @@ class ViewController: UIViewController {
     
     var dictionary: [String: Any] = [:]
     var point: Int = 0
+    var playTime: Int = 60
+    var staticPlayTime: Int = 60
+    var scheduledTimer = Timer()
+    var roundsPerGame: Int = 6
+    var currentRound: Int = 1
+    
+    // Audio variables
+    var incorrectBuzz: SystemSoundID = 0
+    var correctDing: SystemSoundID = 1
     
     
     // Converting the data from a plist file into dictionary
@@ -47,12 +58,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         displayEvents()
+        runTimer()
+        loadSounds()
         self.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // sending variables to another view via segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! DisplayScoreController
+        vc.point = point
+        vc.roundsPerGame = roundsPerGame
     }
     
     
@@ -77,15 +97,34 @@ class ViewController: UIViewController {
             timer.isHidden = true
             resultButton.isHidden = false
             resultButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
+            playCorrectAnswerSound()
         } else {
             timer.isHidden = true
             resultButton.isHidden = false
             resultButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
+            playWrongAnswerSound()
         }
     }
     
+    // Helper function to play again
+    func playAgain() {
+        currentRound = 1
+        point = 0
+        resetTimer()
+        timer.isHidden = false
+        resultButton.isHidden = true
+    }
+    
     @IBAction func nextRound() {
-        displayEvents()
+        if currentRound < roundsPerGame {
+            resetTimer()
+            displayEvents()
+            currentRound += 1
+        } else {
+            // Load modal view for segue
+            self.performSegue(withIdentifier: "scoreSegue" , sender: nil)
+            playAgain()
+        }
     }
     
     
@@ -195,6 +234,48 @@ class ViewController: UIViewController {
         
         timer.isHidden = false
         resultButton.isHidden = true
+    }
+    
+    
+    // The countdown timer for the game
+    func runTimer() {
+        scheduledTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    // Showing the countdown on screen
+    @objc func updateTimer() {
+        if playTime > 0 {
+            playTime -= 1
+            timer.text = "\(playTime)"
+        } else if playTime == 0 {
+            // if countdown is 0 game is over and display score
+            validateAnswer()
+        }
+    }
+    
+    func resetTimer() {
+        playTime = staticPlayTime
+        timer.text = "GO!"
+    }
+    
+    
+    // load and play sounds for correct and wrong answer
+    func loadSounds() {
+        let pathToCorrectSoundFile = Bundle.main.path(forResource: "CorrectDing", ofType: "wav")
+        let correctSoundURL = URL(fileURLWithPath: pathToCorrectSoundFile!)
+        AudioServicesCreateSystemSoundID(correctSoundURL as CFURL, &correctDing)
+        
+        let pathToWrongSoundFile = Bundle.main.path(forResource: "IncorrectBuzz", ofType: "wav")
+        let wrongSoundURL = URL(fileURLWithPath: pathToWrongSoundFile!)
+        AudioServicesCreateSystemSoundID(wrongSoundURL as CFURL, &incorrectBuzz)
+    }
+    
+    func playCorrectAnswerSound() {
+        AudioServicesPlaySystemSound(correctDing)
+    }
+    
+    func playWrongAnswerSound() {
+        AudioServicesPlaySystemSound(incorrectBuzz)
     }
     
     

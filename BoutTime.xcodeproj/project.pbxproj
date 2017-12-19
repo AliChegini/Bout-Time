@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C7B48431FE896730032EF14 /* DisplayScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B48421FE896730032EF14 /* DisplayScoreController.swift */; };
+		7C7B484D1FE8CD6C0032EF14 /* IncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C7B484B1FE8CD6C0032EF14 /* IncorrectBuzz.wav */; };
+		7C7B484E1FE8CD6C0032EF14 /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */; };
 		7C92D8EE1FDEF9F30073C7FF /* EventsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */; };
 		7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C92D8EF1FDF24970073C7FF /* BoutTime.swift */; };
 		7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C7B48421FE896730032EF14 /* DisplayScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayScoreController.swift; sourceTree = "<group>"; };
+		7C7B484B1FE8CD6C0032EF14 /* IncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IncorrectBuzz.wav; sourceTree = "<group>"; };
+		7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 		7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EventsList.plist; sourceTree = "<group>"; };
 		7C92D8EF1FDF24970073C7FF /* BoutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutTime.swift; sourceTree = "<group>"; };
 		7CFBADC51FDE9E67000993D0 /* BoutTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoutTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,12 +66,15 @@
 			children = (
 				7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */,
 				7CFBADCA1FDE9E67000993D0 /* ViewController.swift */,
+				7C7B48421FE896730032EF14 /* DisplayScoreController.swift */,
 				7C92D8EF1FDF24970073C7FF /* BoutTime.swift */,
 				7CFBADCC1FDE9E67000993D0 /* Main.storyboard */,
 				7CFBADCF1FDE9E67000993D0 /* Assets.xcassets */,
 				7CFBADD11FDE9E67000993D0 /* LaunchScreen.storyboard */,
 				7CFBADD41FDE9E67000993D0 /* Info.plist */,
 				7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */,
+				7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */,
+				7C7B484B1FE8CD6C0032EF14 /* IncorrectBuzz.wav */,
 			);
 			path = BoutTime;
 			sourceTree = "<group>";
@@ -130,6 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CFBADD31FDE9E67000993D0 /* LaunchScreen.storyboard in Resources */,
+				7C7B484E1FE8CD6C0032EF14 /* CorrectDing.wav in Resources */,
+				7C7B484D1FE8CD6C0032EF14 /* IncorrectBuzz.wav in Resources */,
 				7CFBADD01FDE9E67000993D0 /* Assets.xcassets in Resources */,
 				7CFBADCE1FDE9E67000993D0 /* Main.storyboard in Resources */,
 				7C92D8EE1FDEF9F30073C7FF /* EventsList.plist in Resources */,
@@ -144,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CFBADCB1FDE9E67000993D0 /* ViewController.swift in Sources */,
+				7C7B48431FE896730032EF14 /* DisplayScoreController.swift in Sources */,
 				7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */,
 				7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */,
 			);
@@ -282,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CPZ6V3E8L9;
 				INFOPLIST_FILE = BoutTime/Info.plist;
@@ -297,6 +310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CPZ6V3E8L9;
 				INFOPLIST_FILE = BoutTime/Info.plist;

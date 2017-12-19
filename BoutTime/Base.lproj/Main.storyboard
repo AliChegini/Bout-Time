@@ -15,6 +15,40 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Display Web Content-->
+        <scene sceneID="cy2-ub-hLc">
+            <objects>
+                <viewController id="hrd-Ri-mzu" customClass="DisplayWebContent" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YmR-Hq-5G9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IX-wJ-DxM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3w0-Sp-vYv" firstAttribute="bottom" secondItem="4IX-wJ-DxM" secondAttribute="bottom" id="4j2-qM-Q0R"/>
+                            <constraint firstItem="4IX-wJ-DxM" firstAttribute="leading" secondItem="3w0-Sp-vYv" secondAttribute="leading" id="BFw-O1-Q5d"/>
+                            <constraint firstItem="4IX-wJ-DxM" firstAttribute="top" secondItem="3w0-Sp-vYv" secondAttribute="top" id="R7i-An-xVj"/>
+                            <constraint firstItem="3w0-Sp-vYv" firstAttribute="trailing" secondItem="4IX-wJ-DxM" secondAttribute="trailing" id="ygg-wd-BT4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3w0-Sp-vYv"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="4IX-wJ-DxM" id="ZMb-r5-85z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBd-Ej-8f3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="-548"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

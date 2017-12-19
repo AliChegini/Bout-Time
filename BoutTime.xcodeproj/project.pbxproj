@@ -12,6 +12,7 @@
 		7C7B484E1FE8CD6C0032EF14 /* CorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */; };
 		7C92D8EE1FDEF9F30073C7FF /* EventsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */; };
 		7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C92D8EF1FDF24970073C7FF /* BoutTime.swift */; };
+		7CEDD0411FE988F4009647D2 /* DisplayWebContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEDD0401FE988F4009647D2 /* DisplayWebContent.swift */; };
 		7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */; };
 		7CFBADCB1FDE9E67000993D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBADCA1FDE9E67000993D0 /* ViewController.swift */; };
 		7CFBADCE1FDE9E67000993D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFBADCC1FDE9E67000993D0 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CorrectDing.wav; sourceTree = "<group>"; };
 		7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EventsList.plist; sourceTree = "<group>"; };
 		7C92D8EF1FDF24970073C7FF /* BoutTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutTime.swift; sourceTree = "<group>"; };
+		7CEDD0401FE988F4009647D2 /* DisplayWebContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayWebContent.swift; sourceTree = "<group>"; };
 		7CFBADC51FDE9E67000993D0 /* BoutTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoutTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFBADC81FDE9E67000993D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CFBADCA1FDE9E67000993D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				7C92D8ED1FDEF9F30073C7FF /* EventsList.plist */,
 				7C7B484C1FE8CD6C0032EF14 /* CorrectDing.wav */,
 				7C7B484B1FE8CD6C0032EF14 /* IncorrectBuzz.wav */,
+				7CEDD0401FE988F4009647D2 /* DisplayWebContent.swift */,
 			);
 			path = BoutTime;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			files = (
 				7CFBADCB1FDE9E67000993D0 /* ViewController.swift in Sources */,
 				7C7B48431FE896730032EF14 /* DisplayScoreController.swift in Sources */,
+				7CEDD0411FE988F4009647D2 /* DisplayWebContent.swift in Sources */,
 				7CFBADC91FDE9E67000993D0 /* AppDelegate.swift in Sources */,
 				7C92D8F01FDF24970073C7FF /* BoutTime.swift in Sources */,
 			);

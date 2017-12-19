@@ -32,8 +32,8 @@ class ViewController: UIViewController {
     
     var dictionary: [String: Any] = [:]
     var point: Int = 0
-    var playTime: Int = 60
-    var staticPlayTime: Int = 60
+    var playTime: Int = 20
+    var staticPlayTime: Int = 20
     var scheduledTimer = Timer()
     var roundsPerGame: Int = 6
     var currentRound: Int = 1
@@ -94,15 +94,15 @@ class ViewController: UIViewController {
     func validateAnswer() {
         if (label1.tag >= label2.tag) && (label2.tag >= label3.tag) && (label3.tag >= label4.tag) {
             point += 1
-            timer.isHidden = true
-            resultButton.isHidden = false
-            resultButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
+            resultMode()
+            disableButtons()
             playCorrectAnswerSound()
+            resultButton.setImage(#imageLiteral(resourceName: "next_round_success"), for: .normal)
         } else {
-            timer.isHidden = true
-            resultButton.isHidden = false
-            resultButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
+            resultMode()
+            disableButtons()
             playWrongAnswerSound()
+            resultButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
         }
     }
     
@@ -110,19 +110,46 @@ class ViewController: UIViewController {
     func playAgain() {
         currentRound = 1
         point = 0
+        // There is a problem here with timing
+        // FIXME: timer seperated
+        displayEvents()
+    }
+    
+    // functions to enable/disable all the buttons
+    func disableButtons() {
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        button5.isEnabled = false
+        button6.isEnabled = false
+    }
+    
+    func enableButtons() {
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         resetTimer()
-        timer.isHidden = false
-        resultButton.isHidden = true
     }
     
     @IBAction func nextRound() {
         if currentRound < roundsPerGame {
+            enableButtons()
             resetTimer()
             displayEvents()
             currentRound += 1
         } else {
             // Load modal view for segue
             self.performSegue(withIdentifier: "scoreSegue" , sender: nil)
+            
+            // FIXME : time problem
+            self.viewDidAppear(true)
             playAgain()
         }
     }
@@ -232,8 +259,20 @@ class ViewController: UIViewController {
         label4.text = eventPack.event4.event
         label4.tag = eventPack.event4.year
         
+        displayMode()
+        enableButtons()
+    }
+    
+    
+    // Helper functions to show and hide timer and result button
+    func displayMode() {
         timer.isHidden = false
         resultButton.isHidden = true
+    }
+    
+    func resultMode() {
+        timer.isHidden = true
+        resultButton.isHidden = false
     }
     
     
@@ -244,12 +283,12 @@ class ViewController: UIViewController {
     
     // Showing the countdown on screen
     @objc func updateTimer() {
-        if playTime > 0 {
-            playTime -= 1
-            timer.text = "\(playTime)"
-        } else if playTime == 0 {
-            // if countdown is 0 game is over and display score
+        playTime -= 1
+        timer.text = "\(playTime)"
+        // if countdown is 0 game is over, reset the timer and validate answer
+        if playTime == 0 {
             validateAnswer()
+            resetTimer()
         }
     }
     

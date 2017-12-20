@@ -15,13 +15,15 @@ class DisplayScoreController: UIViewController {
     var point: Int?
     var roundsPerGame: Int?
     
+    // closure defined in prepare segue in ViewController
+    var goPlayAgain: ( () -> () )?
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         score.text = "\(point!)/\(roundsPerGame!)"
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,10 +31,12 @@ class DisplayScoreController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
     @IBAction func playAgain(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        // Closure defined in prepare segue in ViewController
+        // It dismisses the current view and call playAgain() function
+        self.goPlayAgain?()
     }
-    
     
 
     /*

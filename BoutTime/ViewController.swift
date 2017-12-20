@@ -10,8 +10,8 @@ import UIKit
 import GameKit
 import AudioToolbox
 
+
 class ViewController: UIViewController {
-    
     
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var resultButton: UIButton!
-    
     
     
     @IBOutlet weak var button1: UIButton!
@@ -32,11 +31,12 @@ class ViewController: UIViewController {
     
     var dictionary: [String: Any] = [:]
     var point: Int = 0
-    var playTime: Int = 20
-    var staticPlayTime: Int = 20
+    var playTime: Int = 10
+    var staticPlayTime: Int = 10
     var scheduledTimer = Timer()
     var roundsPerGame: Int = 6
     var currentRound: Int = 1
+    var isAnswerValidated: Bool = false
     
     // Audio variables
     var incorrectBuzz: SystemSoundID = 0
@@ -73,6 +73,11 @@ class ViewController: UIViewController {
         let vc = segue.destination as! DisplayScoreController
         vc.point = point
         vc.roundsPerGame = roundsPerGame
+        
+        vc.goPlayAgain = {
+            self.dismiss(animated: true, completion: nil)
+            self.playAgain()
+        }
     }
     
     
@@ -104,14 +109,18 @@ class ViewController: UIViewController {
             playWrongAnswerSound()
             resultButton.setImage(#imageLiteral(resourceName: "next_round_fail"), for: .normal)
         }
+        
+        isAnswerValidated = true
     }
+    
     
     // Helper function to play again
     func playAgain() {
+        print("playAgain() is called in main view")
         currentRound = 1
         point = 0
-        // There is a problem here with timing
-        // FIXME: timer seperated
+        resetTimer()
+        isAnswerValidated = false
         displayEvents()
     }
     
@@ -134,23 +143,21 @@ class ViewController: UIViewController {
         button6.isEnabled = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        resetTimer()
-    }
-    
+   
     @IBAction func nextRound() {
         if currentRound < roundsPerGame {
             enableButtons()
             resetTimer()
+            // reset the isAnswerValidated to initial state
+            isAnswerValidated = false
             displayEvents()
             currentRound += 1
+            print(currentRound)
         } else {
+            // as answer is already checked in the last round, set it to true
+            isAnswerValidated = true
             // Load modal view for segue
             self.performSegue(withIdentifier: "scoreSegue" , sender: nil)
-            
-            // FIXME : time problem
-            self.viewDidAppear(true)
-            playAgain()
         }
     }
     
@@ -283,12 +290,13 @@ class ViewController: UIViewController {
     
     // Showing the countdown on screen
     @objc func updateTimer() {
-        playTime -= 1
-        timer.text = "\(playTime)"
-        // if countdown is 0 game is over, reset the timer and validate answer
-        if playTime == 0 {
-            validateAnswer()
-            resetTimer()
+        if playTime > 0 {
+            playTime -= 1
+            timer.text = "\(playTime)"
+        } else if playTime == 0 {
+            if isAnswerValidated == false {
+                validateAnswer()
+            }
         }
     }
     

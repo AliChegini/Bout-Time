@@ -10,6 +10,9 @@ import UIKit
 import WebKit
 
 class DisplayWebContent: UIViewController {
+    
+    
+    @IBOutlet weak var webView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,9 @@ class DisplayWebContent: UIViewController {
             let task = session.dataTask(with: request) {
                 (data, response, error) in
                 if error == nil {
-                    self.webView.load(request)
+                    DispatchQueue.main.async {
+                        self.webView.load(request)
+                    }
                 } else {
                     print("ERROR: \(error!)")
                 }
@@ -38,10 +43,12 @@ class DisplayWebContent: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var webView: WKWebView!
+    
+    @IBAction func backToGame(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
-
     /*
     // MARK: - Navigation
 

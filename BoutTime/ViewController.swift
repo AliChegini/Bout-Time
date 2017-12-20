@@ -13,14 +13,16 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
-    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label1: UIButton!
+    @IBOutlet weak var label2: UIButton!
+    @IBOutlet weak var label3: UIButton!
+    @IBOutlet weak var label4: UIButton!
+    
+    
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var resultButton: UIButton!
     
-    
+    // All  the buttons with arrows
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -31,8 +33,8 @@ class ViewController: UIViewController {
     
     var dictionary: [String: Any] = [:]
     var point: Int = 0
-    var playTime: Int = 10
-    var staticPlayTime: Int = 10
+    var playTime: Int = 60
+    var staticPlayTime: Int = 60
     var scheduledTimer = Timer()
     var roundsPerGame: Int = 6
     var currentRound: Int = 1
@@ -70,14 +72,17 @@ class ViewController: UIViewController {
     
     // sending variables to another view via segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! DisplayScoreController
-        vc.point = point
-        vc.roundsPerGame = roundsPerGame
-        
-        vc.goPlayAgain = {
-            self.dismiss(animated: true, completion: nil)
-            self.playAgain()
+        if segue.identifier == "scoreSegue" {
+            let vc = segue.destination as! DisplayScoreController
+            vc.point = point
+            vc.roundsPerGame = roundsPerGame
+            
+            vc.goPlayAgain = {
+                self.dismiss(animated: true, completion: nil)
+                self.playAgain()
+            }
         }
+        
     }
     
     
@@ -167,13 +172,13 @@ class ViewController: UIViewController {
     @IBAction func moveDownLabel1() {
         button1.setImage(#imageLiteral(resourceName: "down_full_selected"), for: .highlighted)
         
-        let tempText = label1.text
+        let tempText = label1.title(for: .normal)
         let tempTag = label1.tag
         
-        label1.text = label2.text
+        label1.setTitle(label2.title(for: .normal), for: .normal)
         label1.tag = label2.tag
         
-        label2.text = tempText
+        label2.setTitle(tempText, for: .normal)
         label2.tag = tempTag
     }
     
@@ -181,13 +186,13 @@ class ViewController: UIViewController {
     @IBAction func moveUpLabel2() {
         button2.setImage(#imageLiteral(resourceName: "up_half_selected"), for: .highlighted)
         
-        let tempText = label2.text
+        let tempText = label2.title(for: .normal)
         let tempTag = label2.tag
         
-        label2.text = label1.text
+        label2.setTitle(label1.title(for: .normal), for: .normal)
         label2.tag = label1.tag
         
-        label1.text = tempText
+        label1.setTitle(tempText, for: .normal)
         label1.tag = tempTag
     }
     
@@ -195,13 +200,13 @@ class ViewController: UIViewController {
     @IBAction func moveDownLabel2() {
         button3.setImage(#imageLiteral(resourceName: "down_half_selected"), for: .highlighted)
         
-        let tempText = label2.text
+        let tempText = label2.title(for: .normal)
         let tempTag = label2.tag
         
-        label2.text = label3.text
+        label2.setTitle(label3.title(for: .normal), for: .normal)
         label2.tag = label3.tag
         
-        label3.text = tempText
+        label3.setTitle(tempText, for: .normal)
         label3.tag = tempTag
     }
     
@@ -209,13 +214,13 @@ class ViewController: UIViewController {
     @IBAction func moveUpLabel3() {
         button4.setImage(#imageLiteral(resourceName: "up_half_selected"), for: .highlighted)
         
-        let tempText = label3.text
+        let tempText = label3.title(for: .normal)
         let tempTag = label3.tag
         
-        label3.text = label2.text
+        label3.setTitle(label2.title(for: .normal), for: .normal)
         label3.tag = label2.tag
         
-        label2.text = tempText
+        label2.setTitle(tempText, for: .normal)
         label2.tag = tempTag
     }
     
@@ -223,13 +228,13 @@ class ViewController: UIViewController {
     @IBAction func moveDownLabel3() {
         button5.setImage(#imageLiteral(resourceName: "down_half_selected"), for: .highlighted)
         
-        let tempText = label3.text
+        let tempText = label3.title(for: .normal)
         let tempTag = label3.tag
         
-        label3.text = label4.text
+        label3.setTitle(label4.title(for: .normal), for: .normal)
         label3.tag = label4.tag
         
-        label4.text = tempText
+        label4.setTitle(tempText, for: .normal)
         label4.tag = tempTag
     }
     
@@ -237,13 +242,13 @@ class ViewController: UIViewController {
     @IBAction func moveUpLabel4() {
         button6.setImage(#imageLiteral(resourceName: "up_full_selected"), for: .highlighted)
         
-        let tempText = label4.text
+        let tempText = label4.title(for: .normal)
         let tempTag = label4.tag
         
-        label4.text = label3.text
+        label4.setTitle(label3.title(for: .normal), for: .normal)
         label4.tag = label3.tag
         
-        label3.text = tempText
+        label3.setTitle(tempText, for: .normal)
         label3.tag = tempTag
     }
     
@@ -254,16 +259,16 @@ class ViewController: UIViewController {
         let eventPack = EventPack.provideEventPack(organizedEvents)
         
         // Populating labels with text and tag
-        label1.text = eventPack.event1.event
+        label1.setTitle(eventPack.event1.event, for: .normal)
         label1.tag = eventPack.event1.year
         
-        label2.text = eventPack.event2.event
+        label2.setTitle(eventPack.event2.event, for: .normal)
         label2.tag = eventPack.event2.year
         
-        label3.text = eventPack.event3.event
+        label3.setTitle(eventPack.event3.event, for: .normal)
         label3.tag = eventPack.event3.year
         
-        label4.text = eventPack.event4.event
+        label4.setTitle(eventPack.event4.event, for: .normal)
         label4.tag = eventPack.event4.year
         
         displayMode()
@@ -275,11 +280,28 @@ class ViewController: UIViewController {
     func displayMode() {
         timer.isHidden = false
         resultButton.isHidden = true
+        disableWebView()
     }
     
     func resultMode() {
         timer.isHidden = true
         resultButton.isHidden = false
+        enableWebView()
+    }
+    
+    // functions to enable and disable the webView
+    func disableWebView() {
+        label1.isEnabled = false
+        label2.isEnabled = false
+        label3.isEnabled = false
+        label4.isEnabled = false
+    }
+    
+    func enableWebView() {
+        label1.isEnabled = true
+        label2.isEnabled = true
+        label3.isEnabled = true
+        label4.isEnabled = true
     }
     
     

@@ -63,25 +63,25 @@ class EventManager: HistoricalEvent {
         return organizedEvents
     }
     
-}
-
-
-// Helper function to divide the events in group of 4
-func provideEvents(_ events: [HistoricalEvent]) -> [HistoricalEvent] {
-    var organizedEvents: [HistoricalEvent] = []
-    var copyOfEvents = events
     
-    for _ in events {
-        let randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: copyOfEvents.count - 1)
-        if organizedEvents.count < eventsPerRound {
-            organizedEvents.append(copyOfEvents[randomNumber])
-            copyOfEvents.remove(at: randomNumber)
-        } else {
-            return organizedEvents
+    // Helper function to divide the events in group of 4
+    static func provideEvents(_ events: [HistoricalEvent]) -> [HistoricalEvent] {
+        var organizedEvents: [HistoricalEvent] = []
+        var copyOfEvents = events
+        
+        for _ in events {
+            let randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: copyOfEvents.count - 1)
+            if organizedEvents.count < eventsPerRound {
+                organizedEvents.append(copyOfEvents[randomNumber])
+                copyOfEvents.remove(at: randomNumber)
+            } else {
+                return organizedEvents
+            }
         }
+        
+        return organizedEvents
     }
-    
-    return organizedEvents
+
 }
 
 

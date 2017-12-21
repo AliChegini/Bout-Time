@@ -13,6 +13,7 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
+    // Buttons for webView feature used as labels
     @IBOutlet weak var label1: UIButton!
     @IBOutlet weak var label2: UIButton!
     @IBOutlet weak var label3: UIButton!
@@ -39,6 +40,7 @@ class ViewController: UIViewController {
     var roundsPerGame: Int = 6
     var currentRound: Int = 1
     var isAnswerValidated: Bool = false
+    var searchQuery: String = ""
     
     // Audio variables
     var incorrectBuzz: SystemSoundID = 0
@@ -72,7 +74,10 @@ class ViewController: UIViewController {
     
     // sending variables to another view via segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "scoreSegue" {
+        
+        // identifying the segue to pass the required data to the desired view
+        switch segue.identifier {
+        case "scoreSegue"?:
             let vc = segue.destination as! DisplayScoreController
             vc.point = point
             vc.roundsPerGame = roundsPerGame
@@ -81,6 +86,20 @@ class ViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
                 self.playAgain()
             }
+        case "label1Segue"?:
+            let vcWeb = segue.destination as! DisplayWebContent
+            vcWeb.searchQuery = label1.title(for: .normal)!
+        case "label2Segue"?:
+            let vcWeb = segue.destination as! DisplayWebContent
+            vcWeb.searchQuery = label2.title(for: .normal)!
+        case "label3Segue"?:
+            let vcWeb = segue.destination as! DisplayWebContent
+            vcWeb.searchQuery = label3.title(for: .normal)!
+        case "label4Segue"?:
+            let vcWeb = segue.destination as! DisplayWebContent
+            vcWeb.searchQuery = label4.title(for: .normal)!
+        default :
+            return
         }
         
     }
@@ -121,7 +140,6 @@ class ViewController: UIViewController {
     
     // Helper function to play again
     func playAgain() {
-        print("playAgain() is called in main view")
         currentRound = 1
         point = 0
         resetTimer()
@@ -157,7 +175,6 @@ class ViewController: UIViewController {
             isAnswerValidated = false
             displayEvents()
             currentRound += 1
-            print(currentRound)
         } else {
             // as answer is already checked in the last round, set it to true
             isAnswerValidated = true
@@ -289,7 +306,7 @@ class ViewController: UIViewController {
         enableWebView()
     }
     
-    // functions to enable and disable the webView
+    // functions to enable and disable the webView buttons
     func disableWebView() {
         label1.isEnabled = false
         label2.isEnabled = false

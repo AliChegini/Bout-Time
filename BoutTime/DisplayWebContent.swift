@@ -13,13 +13,19 @@ class DisplayWebContent: UIViewController {
     
     
     @IBOutlet weak var webView: WKWebView!
+    
+    var searchQuery: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-        let url = URL(string: "https://www.wikipedia.org")
+        // encoding the raw url
+        let rawURL = "https://google.com/search?q=\(searchQuery!)"
+        let escapedRawURL = rawURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        // make a request and load the web page 
+        let url = URL(string: escapedRawURL!)
         if let unwrappedURL = url {
             let request = URLRequest(url: unwrappedURL)
             let session = URLSession.shared

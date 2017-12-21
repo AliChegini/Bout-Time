@@ -146,7 +146,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2e-7g-SHV">
-                                <rect key="frame" x="116" y="560" width="143" height="21"/>
+                                <rect key="frame" x="116" y="560" width="143" height="87"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -220,7 +220,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WbL-Jv-0ah" secondAttribute="trailing" constant="15" id="0tG-rW-K3s"/>
                             <constraint firstItem="OaU-mL-A7p" firstAttribute="bottom" secondItem="4cF-uK-6Ef" secondAttribute="bottom" id="2Wz-Hs-kMs"/>
@@ -239,6 +239,7 @@
                             <constraint firstItem="3Zs-av-iCB" firstAttribute="top" secondItem="jxt-RQ-uTY" secondAttribute="bottom" constant="15" id="USv-QS-pTg"/>
                             <constraint firstItem="jxt-RQ-uTY" firstAttribute="top" secondItem="vN5-rh-9m5" secondAttribute="bottom" constant="15" id="UoT-qy-nbg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WbL-Jv-0ah" secondAttribute="trailing" constant="15" id="YUg-xa-imq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g2e-7g-SHV" secondAttribute="bottom" constant="20" id="Z0f-Xf-cLm"/>
                             <constraint firstItem="4cF-uK-6Ef" firstAttribute="top" secondItem="3Zs-av-iCB" secondAttribute="bottom" constant="15" id="adU-tU-IFe"/>
                             <constraint firstItem="WbL-Jv-0ah" firstAttribute="top" secondItem="vN5-rh-9m5" secondAttribute="top" id="eAa-cw-lCW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MaW-Vg-VQw" secondAttribute="trailing" constant="15" id="hGV-y7-4bD"/>
@@ -333,6 +334,6 @@
         <image name="webview_bar" width="1333" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sz4-Or-6vj"/>
+        <segue reference="Mxo-Rk-82r"/>
     </inferredMetricsTieBreakers>
 </document>
